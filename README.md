@@ -1,6 +1,7 @@
 # Test answers
 
 ### I create this repo with the purpouse of sharing my answers
+### I just put the first words of each question
 *********
 >Write down Dockerfile
 
@@ -11,9 +12,9 @@ machine.
 Note: I'm not claiming be the owner of the code of the Go app but it helps me
 to understand and build the Dockerfile in conjunction with the PHP and Nginx app.
 
-#####Instructions after cloning the repo and assuming you are inside the repo directory
-docker build -t undostres/test:1.0 .
-docker run --rm --name undostres -p 8083:8083 -p 8082:8082 undostres/test:1.0 
+##### Instructions after cloning the repo and assuming you are inside the repo directory
+`docker build -t undostres/test:1.0 `
+`docker run --rm --name undostres -p 8083:8083 -p 8082:8082 undostres/test:1.0`
 
 ********
 >Name the metrics to analyze
@@ -33,14 +34,14 @@ Using SQS we guarantee that messages don’t lose or if some transaction node fa
 
 - Using ASG we solve the problem if one node fails and we provide availability to process more requests. I think that using ASG we can manage the problem of CAP at processing level, providing consitency and partition.
 
--We can create custom metrics using Cloudwatch to establish some auto scaling policies based on the consumption of CPU or RAM, we can choose between a target scaling policy or step scaling policy both are beneficial but I would prefer target scaling policy because it tries to maintain a certain amount of instances based on the metric of a resource. 
+- We can create custom metrics using Cloudwatch to establish some auto scaling policies based on the consumption of CPU or RAM, we can choose between a target scaling policy or step scaling policy both are beneficial but I would prefer target scaling policy because it tries to maintain a certain amount of instances based on the metric of a resource. 
 
--To perform backups of logs we can upload them to S3 buckets and store them as a S3Glacier type, it will depend if we perform some kind of analysis regularly or we just store them for future access. In the case of backup of a database always is preferable to perform them at night or in hours where the number of transactions is low. Another point to take into account is to make them over RDS replicas in that way we don’t put more stress to the master database. 
+- To perform backups of logs we can upload them to S3 buckets and store them as a S3Glacier type, it will depend if we perform some kind of analysis regularly or we just store them for future access. In the case of backup of a database always is preferable to perform them at night or in hours where the number of transactions is low. Another point to take into account is to make them over RDS replicas in that way we don’t put more stress to the master database. 
 
 For an RDS database we can use Aurora using this we forget about creating Read Replicas for Single AZ or MultiAZ RDS databases, the nature of Aurora is to have replicas of the primary DB in case of a failure it promotes a replica as the new primary database.
 For a NoSql service we can use DynamoDB, in this case will depend of the nature of our application and if its designed to work with. As a serverless service we forget about the maintenance and scalability.
 
--Maybe we can reduce costs implementing the services provided by AWS using for example Nginx as a LoadBalacer,
+- Maybe we can reduce costs implementing the services provided by AWS using for example Nginx as a LoadBalacer,
 instead of using a RDS, Aurora or DynamoDB we have the option to install our own databases but it increments the
 difficulty to manage and backup, instead of using Cloudwatch we can implement our own monitoring system maybe 
 using Grafana, ELK or something similar.
