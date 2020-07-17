@@ -6,7 +6,7 @@
 >Write down Dockerfile
 
 You can find the Dockerfile instructions in the [Dockerfile](https://github.com/h3mx/undostres/blob/master/Dockerfile) in the root repo,
-it's possible to clone the repo and build the image and running in your local
+it's possible to clone the repo, build the image and test it in your local
 machine.
 
 Note: I'm not claiming be the owner of the code of the Go app but it helps me
@@ -14,8 +14,16 @@ to understand and build the Dockerfile in conjunction with the PHP and Nginx app
 
 ##### Instructions after cloning the repo and assuming you are inside the repo directory
 `docker build -t undostres/test:1.0 `
+
 `docker run --rm --name undostres -p 8083:8083 -p 8082:8082 undostres/test:1.0`
 
+After running the container you can open a browser and type as follows:
+
+How to test the PHP
+`http://localhost:8082/test.php`
+
+How to test the Go app
+`http://localhost:8083?name=undostres`
 ********
 >Name the metrics to analyze
 
