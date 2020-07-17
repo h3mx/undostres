@@ -13,9 +13,9 @@ Note: I'm not claiming be the owner of the code of the Go app but it helps me
 to understand and build the Dockerfile in conjunction with the PHP and Nginx app.
 
 ##### Instructions after cloning the repo and assuming you are inside the repo directory
-`docker build -t undostres/test:1.0 `
+`docker build -t undostres/test:1.0 .`
 
-`docker run --rm --name undostres -p 8083:8083 -p 8082:8082 undostres/test:1.0`
+`docker run -d --rm --name undostres -p 8083:8083 -p 8082:8082 undostres/test:1.0`
 
 After running the container you can open a browser and type as follows:
 
